@@ -1,7 +1,7 @@
 #include "Parallelepiped.h"
 
 
-Parallelepiped::Parallelepiped(vec3 position_, vec3 size_, int material_) : position(position_), _material(material_)
+Parallelepiped::Parallelepiped(vec3 position_, vec3 size_) : position(position_)
 {
 	name = "                                                     ";
 	int scaleFactor = 50;
@@ -27,19 +27,10 @@ void Parallelepiped::init()
 	// TODO Не правильно выставлены нормали
 
 	// Верхняя грань 
-	// B1 A1 D1
-	_vertexList[i * 3] = -1; _vertexList[i * 3 + 1] = 1; _vertexList[i * 3 + 2] = -1;
-	_mapcoordList[i * 2] = 0; _mapcoordList[i * 2 + 1] = 1;
-	_normalList[i * 3] = 0; _normalList[i * 3 + 1] = 1; _normalList[i * 3 + 2] = 0;
 	i++;
 	_vertexList[i * 3] = -1; _vertexList[i * 3 + 1] = 1; _vertexList[i * 3 + 2] = 1;
 	_mapcoordList[i * 2] = 0; _mapcoordList[i * 2 + 1] = 0;
 	_normalList[i * 3] = 0; _normalList[i * 3 + 1] = 1; _normalList[i * 3 + 2] = 0;
-	i++;
-	_vertexList[i * 3] = 1; _vertexList[i * 3 + 1] = 1; _vertexList[i * 3 + 2] = 1;
-	_mapcoordList[i * 2] = 1; _mapcoordList[i * 2 + 1] = 0;
-	_normalList[i * 3] = 0; _normalList[i * 3 + 1] = 1; _normalList[i * 3 + 2] = 0;
-	// D1 C1 B1
 	i++;
 	_vertexList[i * 3] = 1; _vertexList[i * 3 + 1] = 1; _vertexList[i * 3 + 2] = 1;
 	_mapcoordList[i * 2] = 1; _mapcoordList[i * 2 + 1] = 0;
@@ -52,9 +43,13 @@ void Parallelepiped::init()
 	_vertexList[i * 3] = -1; _vertexList[i * 3 + 1] = 1; _vertexList[i * 3 + 2] = -1;
 	_mapcoordList[i * 2] = 0; _mapcoordList[i * 2 + 1] = 1;
 	_normalList[i * 3] = 0; _normalList[i * 3 + 1] = 1; _normalList[i * 3 + 2] = 0;
+	i++;
+	_vertexList[i * 3] = -1; _vertexList[i * 3 + 1] = 1; _vertexList[i * 3 + 2] = 1;
+	_mapcoordList[i * 2] = 0; _mapcoordList[i * 2 + 1] = 0;
+	_normalList[i * 3] = 0; _normalList[i * 3 + 1] = 1; _normalList[i * 3 + 2] = 0;
 
-	// Нижняя грань 
-	// A B C
+
+	// Нижняя грань
 	i++;
 	_vertexList[i * 3] = -1; _vertexList[i * 3 + 1] = -1; _vertexList[i * 3 + 2] = 1;
 	_mapcoordList[i * 2] = 0; _mapcoordList[i * 2 + 1] = 1;
@@ -63,12 +58,6 @@ void Parallelepiped::init()
 	_vertexList[i * 3] = -1; _vertexList[i * 3 + 1] = -1; _vertexList[i * 3 + 2] = -1;
 	_mapcoordList[i * 2] = 0; _mapcoordList[i * 2 + 1] = 0;
 	_normalList[i * 3] = 0; _normalList[i * 3 + 1] = -1; _normalList[i * 3 + 2] = 0;
-	i++;
-	_vertexList[i * 3] = 1; _vertexList[i * 3 + 1] = -1; _vertexList[i * 3 + 2] = -1;
-	_mapcoordList[i * 2] = 1; _mapcoordList[i * 2 + 1] = 0;
-	_normalList[i * 3] = 0; _normalList[i * 3 + 1] = -1; _normalList[i * 3 + 2] = 0;
-
-	// C D A
 	i++;
 	_vertexList[i * 3] = 1; _vertexList[i * 3 + 1] = -1; _vertexList[i * 3 + 2] = -1;
 	_mapcoordList[i * 2] = 1; _mapcoordList[i * 2 + 1] = 0;
@@ -82,64 +71,35 @@ void Parallelepiped::init()
 	_mapcoordList[i * 2] = 0; _mapcoordList[i * 2 + 1] = 1;
 	_normalList[i * 3] = 0; _normalList[i * 3 + 1] = -1; _normalList[i * 3 + 2] = 0;
 
-	// Передняя грань 
-	// A1 A D
+
+	// Передняя грань
 	i++;
 	_vertexList[i * 3] = -1; _vertexList[i * 3 + 1] = 1; _vertexList[i * 3 + 2] = 1;
-	_mapcoordList[i * 2] = 0; _mapcoordList[i * 2 + 1] = 1;
-	_normalList[i * 3] = 0; _normalList[i * 3 + 1] = 0; _normalList[i * 3 + 2] = 1;
-	i++;
-	_vertexList[i * 3] = -1; _vertexList[i * 3 + 1] = -1; _vertexList[i * 3 + 2] = 1;
 	_mapcoordList[i * 2] = 0; _mapcoordList[i * 2 + 1] = 0;
-	_normalList[i * 3] = 0; _normalList[i * 3 + 1] = 0; _normalList[i * 3 + 2] = 1;
-	i++;
-	_vertexList[i * 3] = 1; _vertexList[i * 3 + 1] = -1; _vertexList[i * 3 + 2] = 1;
-	_mapcoordList[i * 2] = 1; _mapcoordList[i * 2 + 1] = 0;
-	_normalList[i * 3] = 0; _normalList[i * 3 + 1] = 0; _normalList[i * 3 + 2] = 1;
-	// D1 D A1
-	i++;
-	_vertexList[i * 3] = 1; _vertexList[i * 3 + 1] = -1; _vertexList[i * 3 + 2] = 1;
-	_mapcoordList[i * 2] = 1; _mapcoordList[i * 2 + 1] = 0;
-	_normalList[i * 3] = 0; _normalList[i * 3 + 1] = 0; _normalList[i * 3 + 2] = 1;
+	_normalList[i * 3] = 0; _normalList[i * 3 + 1] = 1; _normalList[i * 3 + 2] = 0;
 	i++;
 	_vertexList[i * 3] = 1; _vertexList[i * 3 + 1] = 1; _vertexList[i * 3 + 2] = 1;
+	_mapcoordList[i * 2] = 1; _mapcoordList[i * 2 + 1] = 0;
+	_normalList[i * 3] = 0; _normalList[i * 3 + 1] = 1; _normalList[i * 3 + 2] = 0;
+	i++;
+	_vertexList[i * 3] = 1; _vertexList[i * 3 + 1] = -1; _vertexList[i * 3 + 2] = 1;
 	_mapcoordList[i * 2] = 1; _mapcoordList[i * 2 + 1] = 1;
-	_normalList[i * 3] = 0; _normalList[i * 3 + 1] = 0; _normalList[i * 3 + 2] = 1;
+	_normalList[i * 3] = 0; _normalList[i * 3 + 1] = -1; _normalList[i * 3 + 2] = 0;
+	i++;
+	_vertexList[i * 3] = -1; _vertexList[i * 3 + 1] = -1; _vertexList[i * 3 + 2] = 1;
+	_mapcoordList[i * 2] = 0; _mapcoordList[i * 2 + 1] = 1;
+	_normalList[i * 3] = 0; _normalList[i * 3 + 1] = -1; _normalList[i * 3 + 2] = 0;
 	i++;
 	_vertexList[i * 3] = -1; _vertexList[i * 3 + 1] = 1; _vertexList[i * 3 + 2] = 1;
-	_mapcoordList[i * 2] = 0; _mapcoordList[i * 2 + 1] = 1;
-	_normalList[i * 3] = 0; _normalList[i * 3 + 1] = 0; _normalList[i * 3 + 2] = 1;
+	_mapcoordList[i * 2] = 0; _mapcoordList[i * 2 + 1] = 0;
+	_normalList[i * 3] = 0; _normalList[i * 3 + 1] = 1; _normalList[i * 3 + 2] = 0;
 
-	// Задняя грань 
-	// B B1 C
-	i++;
-	_vertexList[i * 3] = -1; _vertexList[i * 3 + 1] = -1; _vertexList[i * 3 + 2] = -1;
-	_mapcoordList[i * 2] = 1; _mapcoordList[i * 2 + 1] = 0;
-	_normalList[i * 3] = 0; _normalList[i * 3 + 1] = 0; _normalList[i * 3 + 2] = -1;
-	i++;
-	_vertexList[i * 3] = -1; _vertexList[i * 3 + 1] = 1; _vertexList[i * 3 + 2] = -1;
-	_mapcoordList[i * 2] = 1; _mapcoordList[i * 2 + 1] = 1;
-	_normalList[i * 3] = 0; _normalList[i * 3 + 1] = 0; _normalList[i * 3 + 2] = -1;
-	i++;
-	_vertexList[i * 3] = 1; _vertexList[i * 3 + 1] = -1; _vertexList[i * 3 + 2] = -1;
-	_mapcoordList[i * 2] = 0; _mapcoordList[i * 2 + 1] = 0;
-	_normalList[i * 3] = 0; _normalList[i * 3 + 1] = 0; _normalList[i * 3 + 2] = -1;
-	// C1 C B1
-	i++;
-	_vertexList[i * 3] = 1; _vertexList[i * 3 + 1] = 1; _vertexList[i * 3 + 2] = -1;
-	_mapcoordList[i * 2] = 1; _mapcoordList[i * 2 + 1] = 0;
-	_normalList[i * 3] = 0; _normalList[i * 3 + 1] = 0; _normalList[i * 3 + 2] = -1;
-	i++;
-	_vertexList[i * 3] = 1; _vertexList[i * 3 + 1] = -1; _vertexList[i * 3 + 2] = -1;
-	_mapcoordList[i * 2] = 0; _mapcoordList[i * 2 + 1] = 0;
-	_normalList[i * 3] = 0; _normalList[i * 3 + 1] = 0; _normalList[i * 3 + 2] = -1;
-	i++;
-	_vertexList[i * 3] = -1; _vertexList[i * 3 + 1] = 1; _vertexList[i * 3 + 2] = -1;
-	_mapcoordList[i * 2] = 1; _mapcoordList[i * 2 + 1] = 1;
-	_normalList[i * 3] = 0; _normalList[i * 3 + 1] = 0; _normalList[i * 3 + 2] = -1;
 
 	// Левая грань
-	// B A A1  
+	i++;
+	_vertexList[i * 3] = -1; _vertexList[i * 3 + 1] = 1; _vertexList[i * 3 + 2] = -1;
+	_mapcoordList[i * 2] = 0; _mapcoordList[i * 2 + 1] = 1;
+	_normalList[i * 3] = 0; _normalList[i * 3 + 1] = 1; _normalList[i * 3 + 2] = 0;
 	i++;
 	_vertexList[i * 3] = -1; _vertexList[i * 3 + 1] = -1; _vertexList[i * 3 + 2] = -1;
 	_mapcoordList[i * 2] = 0; _mapcoordList[i * 2 + 1] = 0;
@@ -152,47 +112,56 @@ void Parallelepiped::init()
 	_vertexList[i * 3] = -1; _vertexList[i * 3 + 1] = 1; _vertexList[i * 3 + 2] = 1;
 	_mapcoordList[i * 2] = 1; _mapcoordList[i * 2 + 1] = 1;
 	_normalList[i * 3] = 0; _normalList[i * 3 + 1] = 0; _normalList[i * 3 + 2] = 1;
-	// B A1 B1
-	i++;
-	_vertexList[i * 3] = -1; _vertexList[i * 3 + 1] = -1; _vertexList[i * 3 + 2] = -1;
-	_mapcoordList[i * 2] = 0; _mapcoordList[i * 2 + 1] = 0;
-	_normalList[i * 3] = 0; _normalList[i * 3 + 1] = 0; _normalList[i * 3 + 2] = -1;
-	i++;
-	_vertexList[i * 3] = -1; _vertexList[i * 3 + 1] = 1; _vertexList[i * 3 + 2] = 1;
-	_mapcoordList[i * 2] = 1; _mapcoordList[i * 2 + 1] = 1;
-	_normalList[i * 3] = 0; _normalList[i * 3 + 1] = 0; _normalList[i * 3 + 2] = 1;
 	i++;
 	_vertexList[i * 3] = -1; _vertexList[i * 3 + 1] = 1; _vertexList[i * 3 + 2] = -1;
 	_mapcoordList[i * 2] = 0; _mapcoordList[i * 2 + 1] = 1;
+	_normalList[i * 3] = 0; _normalList[i * 3 + 1] = 1; _normalList[i * 3 + 2] = 0;
+
+
+	// Задняя грань
+	i++;
+	_vertexList[i * 3] = -1; _vertexList[i * 3 + 1] = 1; _vertexList[i * 3 + 2] = -1;
+	_mapcoordList[i * 2] = 0; _mapcoordList[i * 2 + 1] = 1;
+	_normalList[i * 3] = 0; _normalList[i * 3 + 1] = 1; _normalList[i * 3 + 2] = 0;
+	i++;
+	_vertexList[i * 3] = -1; _vertexList[i * 3 + 1] = -1; _vertexList[i * 3 + 2] = -1;
+	_mapcoordList[i * 2] = 1; _mapcoordList[i * 2 + 1] = 0;
 	_normalList[i * 3] = 0; _normalList[i * 3 + 1] = 0; _normalList[i * 3 + 2] = -1;
+	i++;
+	_vertexList[i * 3] = 1; _vertexList[i * 3 + 1] = -1; _vertexList[i * 3 + 2] = -1;
+	_mapcoordList[i * 2] = 0; _mapcoordList[i * 2 + 1] = 0;
+	_normalList[i * 3] = 0; _normalList[i * 3 + 1] = 0; _normalList[i * 3 + 2] = -1;
+	i++;
+	_vertexList[i * 3] = 1; _vertexList[i * 3 + 1] = 1; _vertexList[i * 3 + 2] = -1;
+	_mapcoordList[i * 2] = 0; _mapcoordList[i * 2 + 1] = 1;
+	_normalList[i * 3] = 0; _normalList[i * 3 + 1] = 1; _normalList[i * 3 + 2] = 0;
+	i++;
+	_vertexList[i * 3] = -1; _vertexList[i * 3 + 1] = 1; _vertexList[i * 3 + 2] = -1;
+	_mapcoordList[i * 2] = 0; _mapcoordList[i * 2 + 1] = 1;
+	_normalList[i * 3] = 0; _normalList[i * 3 + 1] = 1; _normalList[i * 3 + 2] = 0;
+
 
 	// Правая грань
-	// D1 D C
 	i++;
-	_vertexList[i * 3] = 1; _vertexList[i * 3 + 1] = 1; _vertexList[i * 3 + 2] = 1;
+	_vertexList[i * 3] = 1; _vertexList[i * 3 + 1] = 1; _vertexList[i * 3 + 2] = -1;
 	_mapcoordList[i * 2] = 0; _mapcoordList[i * 2 + 1] = 1;
-	_normalList[i * 3] = 0; _normalList[i * 3 + 1] = 0; _normalList[i * 3 + 2] = 1;
-	i++;
-	_vertexList[i * 3] = 1; _vertexList[i * 3 + 1] = -1; _vertexList[i * 3 + 2] = 1;
-	_mapcoordList[i * 2] = 0; _mapcoordList[i * 2 + 1] = 0;
-	_normalList[i * 3] = 0; _normalList[i * 3 + 1] = 0; _normalList[i * 3 + 2] = 1;
+	_normalList[i * 3] = 0; _normalList[i * 3 + 1] = 1; _normalList[i * 3 + 2] = 0;
 	i++;
 	_vertexList[i * 3] = 1; _vertexList[i * 3 + 1] = -1; _vertexList[i * 3 + 2] = -1;
 	_mapcoordList[i * 2] = 1; _mapcoordList[i * 2 + 1] = 0;
-	_normalList[i * 3] = 0; _normalList[i * 3 + 1] = 0; _normalList[i * 3 + 2] = -1;
-	// C1 D1 C
+	_normalList[i * 3] = 0; _normalList[i * 3 + 1] = -1; _normalList[i * 3 + 2] = 0;
 	i++;
-	_vertexList[i * 3] = 1; _vertexList[i * 3 + 1] = 1; _vertexList[i * 3 + 2] = -1;
+	_vertexList[i * 3] = 1; _vertexList[i * 3 + 1] = -1; _vertexList[i * 3 + 2] = 1;
 	_mapcoordList[i * 2] = 1; _mapcoordList[i * 2 + 1] = 1;
-	_normalList[i * 3] = 0; _normalList[i * 3 + 1] = 0; _normalList[i * 3 + 2] = -1;
+	_normalList[i * 3] = 0; _normalList[i * 3 + 1] = -1; _normalList[i * 3 + 2] = 0;
 	i++;
 	_vertexList[i * 3] = 1; _vertexList[i * 3 + 1] = 1; _vertexList[i * 3 + 2] = 1;
-	_mapcoordList[i * 2] = 0; _mapcoordList[i * 2 + 1] = 1;
-	_normalList[i * 3] = 0; _normalList[i * 3 + 1] = 0; _normalList[i * 3 + 2] = 1;
+	_mapcoordList[i * 2] = 1; _mapcoordList[i * 2 + 1] = 0;
+	_normalList[i * 3] = 0; _normalList[i * 3 + 1] = 1; _normalList[i * 3 + 2] = 0;
 	i++;
-	_vertexList[i * 3] = 1; _vertexList[i * 3 + 1] = -1; _vertexList[i * 3 + 2] = -1;
-	_mapcoordList[i * 2] = -1; _mapcoordList[i * 2 + 1] = 0;
-	_normalList[i * 3] = 0; _normalList[i * 3 + 1] = 0; _normalList[i * 3 + 2] = -1;
+	_vertexList[i * 3] = 1; _vertexList[i * 3 + 1] = 1; _vertexList[i * 3 + 2] = -1;
+	_mapcoordList[i * 2] = 0; _mapcoordList[i * 2 + 1] = 1;
+	_normalList[i * 3] = 0; _normalList[i * 3 + 1] = 1; _normalList[i * 3 + 2] = 0;
 }
 
 void Parallelepiped::initShaders()
@@ -204,17 +173,7 @@ void Parallelepiped::initShaders()
 
 	textureID1 = glGetUniformLocation(shaderID, "mainSampler");
 
-	switch (_material) {
-	case 1:
-		AddTexture("texture02.jpg", textureID1);
-		break;
-	case 2:
-		AddTexture("texture03.jpg", textureID1);
-		break;
-	default:
-		AddTexture("texture01.jpg", textureID1);
-		break;
-	}
+	AddTexture("texture02.jpg", textureID1);
 }
 
 void Parallelepiped::initGeometry()
@@ -225,22 +184,19 @@ void Parallelepiped::initGeometry()
 
 	glGenBuffers(1, &vertexbuffer);
 	glBindBuffer(GL_ARRAY_BUFFER, vertexbuffer);
-	glBufferData(GL_ARRAY_BUFFER, 108 * sizeof(GLuint), _vertexList, GL_STATIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, 200 * sizeof(GLuint), _vertexList, GL_STATIC_DRAW);
 
 	glGenBuffers(1, &uvbuffer);
 	glBindBuffer(GL_ARRAY_BUFFER, uvbuffer);
-	glBufferData(GL_ARRAY_BUFFER, 72 * sizeof(GLuint), _mapcoordList, GL_STATIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, 100 * sizeof(GLuint), _mapcoordList, GL_STATIC_DRAW);
 
 	glGenBuffers(1, &normalbuffer);
 	glBindBuffer(GL_ARRAY_BUFFER, normalbuffer);
-	glBufferData(GL_ARRAY_BUFFER, 108 * sizeof(GLuint), _normalList, GL_STATIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, 200 * sizeof(GLuint), _normalList, GL_STATIC_DRAW);
 }
 
 void Parallelepiped::Draw(float *MVP, int displayType) 
 {
-	if (!isEnable)
-		return;
-
 	glUseProgram(shaderID);
 	glUniformMatrix4fv(matrixID, 1, GL_FALSE, MVP);
 	glUniform3f(shaderPosID, position.x, position.y, position.z);
@@ -288,7 +244,7 @@ void Parallelepiped::Draw(float *MVP, int displayType)
 
 
 	// Draw the triangle !
-	glDrawArrays(displayType, 0, 108 / 3);
+	glDrawArrays(displayType, 0, 130 / 5);
 
 	glDisableVertexAttribArray(0);
 	glDisableVertexAttribArray(1);

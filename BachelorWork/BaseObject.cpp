@@ -3,7 +3,6 @@
 
 BaseObject::BaseObject()
 {
-	isEnable = true;
 }
 
 void BaseObject::AddTexture(const char *textureFile, GLuint shaderTextureId) {
@@ -11,6 +10,7 @@ void BaseObject::AddTexture(const char *textureFile, GLuint shaderTextureId) {
 	if (cash == _texture.end())
 		_texture[textureFile] = new Texture(textureFile, shaderTextureId);
 }
+
 
 BaseObject::~BaseObject()
 {

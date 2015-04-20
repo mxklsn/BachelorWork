@@ -17,8 +17,6 @@ protected:
 
 	GLuint shaderPosID;
 	GLuint shaderSizeID;
-
-	int _material;
 protected:
 	virtual void init() override;
 	virtual void initShaders() override;
@@ -31,7 +29,7 @@ public:
 	vec3 size;
 	vec3 GlobalSize;
 
-	Parallelepiped(vec3 position, vec3 size, int material);
+	Parallelepiped(vec3 position, vec3 size);
 
 	void Draw(float *MVP, int displayType);
 

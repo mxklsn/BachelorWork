@@ -5,25 +5,9 @@ Grid::Grid(vec3 start_, vec3 size_, vec3 step_) : start(start_), size(size_), st
 {
 	name = "                                                     ";
 
-	alpha = 0.2;
-
 	init();
 	initShaders();
 	initGeometry();
-}
-
-vec3 Grid::getCenter() const
-{
-	return vec3(start.x + size.x / 2, start.y + size.y / 2, start.z + size.z / 2);
-}
-
-void Grid::setAlpha(float value)
-{
-	alpha = value;
-	if (alpha < 0)
-		alpha = 0;
-	if (alpha > 1)
-		alpha = 1;
 }
 
 // TODO Сделать функцию и переменные static
@@ -88,8 +72,6 @@ void Grid::initShaders()
 {
 	shaderID = LoadShaders("grid.vert", "grid.frag");
 	matrixID = glGetUniformLocation(shaderID, "MVP");
-	alphaID = glGetUniformLocation(shaderID, "alpha");
-	cameraPositionID = glGetUniformLocation(shaderID, "cameraPosition");
 
 	textureID1 = glGetUniformLocation(shaderID, "mainSampler");
 
@@ -108,15 +90,10 @@ void Grid::initGeometry()
 }
 
 
-void Grid::Draw(float *MVP, vec3 cameraPosition)
+void Grid::Draw(float *MVP)
 {
-	if (!isEnable)
-		return;
-
 	glUseProgram(shaderID);
 	glUniformMatrix4fv(matrixID, 1, GL_FALSE, MVP);
-	glUniform1f(alphaID, alpha);
-	glUniform3f(cameraPositionID, cameraPosition.x, cameraPosition.y, cameraPosition.z);
 
 	int index = 0;
 	map<const char*, Texture*>::iterator item;

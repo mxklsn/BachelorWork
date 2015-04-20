@@ -6,13 +6,10 @@
 
 using namespace glm;
 
-class Grid : public BaseObject
+class Grid : BaseObject
 {
 private:
 	int countPoint;
-	float alpha;
-	int alphaID;
-	int cameraPositionID;
 protected:
 	vec3 step;
 	vec3 start;
@@ -23,9 +20,7 @@ protected:
 	virtual void initGeometry() override;
 public:
 	Grid(vec3 center, vec3 size, vec3 step);
-	void setAlpha(float value);
-	void Draw(float *MVP, vec3 cameraPosition);
-	vec3 getCenter() const;
+	void Draw(float *MVP);
 	~Grid();
 };
 
