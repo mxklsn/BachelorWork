@@ -3,6 +3,7 @@
 #include "Helpers.h"
 #include "Texture.h"
 
+
 class BaseObject
 {
 protected:
@@ -29,7 +30,7 @@ public:
 	BaseObject();
 
 	void AddTexture(const char *textureFile, GLuint shaderTextureId);
-
+	bool enable;
 	~BaseObject();
 };
 

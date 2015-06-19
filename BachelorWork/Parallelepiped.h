@@ -4,6 +4,7 @@
 #include "Texture.h"
 #include "BaseObject.h"
 
+
 using namespace glm;
 
 class Parallelepiped : public BaseObject
@@ -11,14 +12,22 @@ class Parallelepiped : public BaseObject
 protected:
 	GLfloat* _mapcoordList;
 	GLfloat* _normalList;
+	GLfloat* _vertexListForCircuit;
 
 	GLuint uvbuffer;
 	GLuint normalbuffer;
+	GLuint vertexbufferForCircuit;
 
 	GLuint shaderPosID;
 	GLuint shaderSizeID;
+	GLuint sectionID;
+	GLuint shaderLayerID;
+	GLuint shaderLayerColorRGBAID;
+	GLuint shaderPositionID;
+
 protected:
 	virtual void init() override;
+	virtual void initCircuit();
 	virtual void initShaders() override;
 	virtual void initGeometry() override;
 public:
@@ -28,10 +37,16 @@ public:
 	vec3 position;
 	vec3 size;
 	vec3 GlobalSize;
+	vec4 color;
+	vec3 positionLighting;
 
-	Parallelepiped(vec3 position, vec3 size);
+	float material;
 
-	void Draw(float *MVP, int displayType);
+	bool section;
+
+	Parallelepiped(vec3 position, vec3 size, float material);
+	void SetPositionLighting(vec3 positionLighting_);
+	void Draw(float *MVP, float *M, float *V, float *P, int displayType, bool LayerColor);
 
 	~Parallelepiped();
 };

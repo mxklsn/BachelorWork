@@ -8,7 +8,7 @@ class Camera
 {
 public:
 	mat4 MVP;
-private:
+public:
 	mat4 _projection;
 	mat4 _view;
 	mat4 _model;

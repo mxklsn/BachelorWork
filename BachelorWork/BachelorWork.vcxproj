@@ -69,6 +69,7 @@
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Grid.cpp" />
     <ClCompile Include="Helpers.cpp" />
+    <ClCompile Include="Lamp.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Mesh.cpp" />
     <ClCompile Include="Parallelepiped.cpp" />
@@ -81,35 +82,53 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="..\include\GL\glew32.dll" />
-    <None Include="apollon.3DS" />
-    <None Include="cube.frag" />
-    <None Include="cube.vert" />
+    <None Include="cube.frag">
+      <FileType>Document</FileType>
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</DeploymentContent>
+    </None>
+    <None Include="cube.vert">
+      <FileType>Document</FileType>
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</DeploymentContent>
+    </None>
     <None Include="cubes.api" />
-    <None Include="ElephantBody.3ds" />
-    <None Include="firtree.3ds" />
-    <None Include="grid.frag" />
-    <None Include="grid.vert" />
-    <None Include="ruins.3ds" />
-    <None Include="Shader1.frag" />
-    <None Include="Shader1.vert" />
-    <None Include="sun.3DS" />
-    <None Include="Torus.3ds" />
+    <None Include="sectionCube.frag">
+      <FileType>Document</FileType>
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</DeploymentContent>
+    </None>
+    <None Include="sectionCube.vert">
+      <FileType>Document</FileType>
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</DeploymentContent>
+    </None>
+    <None Include="Shader1.frag">
+      <FileType>Document</FileType>
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</DeploymentContent>
+    </None>
+    <None Include="Shader1.vert">
+      <FileType>Document</FileType>
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</DeploymentContent>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BaseObject.h" />
     <ClInclude Include="Camera.h" />
-    <ClInclude Include="Grid.h" />
+    <ClInclude Include="Section.h" />
     <ClInclude Include="Helpers.h" />
     <ClInclude Include="includes.h" />
     <ClInclude Include="Mesh.h" />
     <ClInclude Include="Parallelepiped.h" />
     <ClInclude Include="SkyBox.h" />
     <ClInclude Include="Texture.h" />
+    <ClInclude Include="Lamp.h" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="asfalt.jpg" />
+    <Image Include="derevo.jpg" />
+    <Image Include="glina.jpg" />
+    <Image Include="granit.jpg" />
+    <Image Include="med.jpg" />
+    <Image Include="mramor.jpg" />
+    <Image Include="pesok.jpg" />
     <Image Include="sun_tex.bmp" />
-    <Image Include="texture01.jpg" />
-    <Image Include="texture02.jpg" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

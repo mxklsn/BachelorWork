@@ -1,13 +1,15 @@
-#include "Grid.h"
+/*#include "Grid.h"
 
 
 Grid::Grid(vec3 start_, vec3 size_, vec3 step_) : start(start_), size(size_), step(step_)
 {
 	name = "                                                     ";
+	section = false;
 
 	init();
 	initShaders();
 	initGeometry();
+
 }
 
 // TODO Сделать функцию и переменные static
@@ -72,6 +74,8 @@ void Grid::initShaders()
 {
 	shaderID = LoadShaders("grid.vert", "grid.frag");
 	matrixID = glGetUniformLocation(shaderID, "MVP");
+	sectionID = glGetUniformLocation(shaderID, "section");
+	sectionCenterID = glGetUniformLocation(shaderID, "centerSection");
 
 	textureID1 = glGetUniformLocation(shaderID, "mainSampler");
 
@@ -94,6 +98,10 @@ void Grid::Draw(float *MVP)
 {
 	glUseProgram(shaderID);
 	glUniformMatrix4fv(matrixID, 1, GL_FALSE, MVP);
+	glUniform1f(sectionID, section);
+	vec3 temp = vec3(size.x / 2, size.y / 2, size.z / 2);
+	vec3 center = start + temp;
+	glUniform3f(sectionCenterID, center.x, center.y, center.z);
 
 	int index = 0;
 	map<const char*, Texture*>::iterator item;
@@ -124,3 +132,4 @@ void Grid::Draw(float *MVP)
 Grid::~Grid()
 {
 }
+*/

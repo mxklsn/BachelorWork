@@ -25,6 +25,12 @@
     <Filter Include="Файлы ресурсов\shaders">
       <UniqueIdentifier>{638b0139-6a98-4dc6-89fd-cedb90937f47}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Файлы ресурсов\texture">
+      <UniqueIdentifier>{c08b1757-3187-4fcd-9a4e-1e4d9609b5da}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы ресурсов\cwc">
+      <UniqueIdentifier>{3d6e4e57-f0db-44df-a486-d4ad59a38476}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -54,6 +60,9 @@
     <ClCompile Include="BaseObject.cpp">
       <Filter>Файлы исходного кода</Filter>
     </ClCompile>
+    <ClCompile Include="Lamp.cpp">
+      <Filter>Файлы исходного кода</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Library Include="..\include\GL\freeglut.lib">
@@ -67,23 +76,14 @@
     <None Include="..\include\GL\glew32.dll">
       <Filter>Файлы ресурсов\GL</Filter>
     </None>
-    <None Include="sun.3DS">
+    <None Include="cubes.api">
       <Filter>Файлы ресурсов</Filter>
     </None>
-    <None Include="apollon.3DS">
-      <Filter>Файлы ресурсов</Filter>
+    <None Include="cube.frag">
+      <Filter>Файлы ресурсов\shaders</Filter>
     </None>
-    <None Include="firtree.3ds">
-      <Filter>Файлы ресурсов</Filter>
-    </None>
-    <None Include="ruins.3ds">
-      <Filter>Файлы ресурсов</Filter>
-    </None>
-    <None Include="ElephantBody.3ds">
-      <Filter>Файлы ресурсов</Filter>
-    </None>
-    <None Include="Torus.3ds">
-      <Filter>Файлы ресурсов</Filter>
+    <None Include="cube.vert">
+      <Filter>Файлы ресурсов\shaders</Filter>
     </None>
     <None Include="Shader1.frag">
       <Filter>Файлы ресурсов\shaders</Filter>
@@ -91,19 +91,10 @@
     <None Include="Shader1.vert">
       <Filter>Файлы ресурсов\shaders</Filter>
     </None>
-    <None Include="cube.vert">
+    <None Include="sectionCube.frag">
       <Filter>Файлы ресурсов\shaders</Filter>
     </None>
-    <None Include="cube.frag">
-      <Filter>Файлы ресурсов\shaders</Filter>
-    </None>
-    <None Include="cubes.api">
-      <Filter>Файлы ресурсов</Filter>
-    </None>
-    <None Include="grid.frag">
-      <Filter>Файлы ресурсов\shaders</Filter>
-    </None>
-    <None Include="grid.vert">
+    <None Include="sectionCube.vert">
       <Filter>Файлы ресурсов\shaders</Filter>
     </None>
   </ItemGroup>
@@ -129,22 +120,40 @@
     <ClInclude Include="Parallelepiped.h">
       <Filter>Заголовочные файлы</Filter>
     </ClInclude>
-    <ClInclude Include="Grid.h">
+    <ClInclude Include="BaseObject.h">
       <Filter>Заголовочные файлы</Filter>
     </ClInclude>
-    <ClInclude Include="BaseObject.h">
+    <ClInclude Include="Lamp.h">
+      <Filter>Заголовочные файлы</Filter>
+    </ClInclude>
+    <ClInclude Include="Section.h">
       <Filter>Заголовочные файлы</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="sun_tex.bmp">
-      <Filter>Файлы ресурсов</Filter>
+      <Filter>Файлы ресурсов\texture</Filter>
     </Image>
-    <Image Include="texture01.jpg">
-      <Filter>Файлы ресурсов</Filter>
+    <Image Include="pesok.jpg">
+      <Filter>Файлы ресурсов\texture</Filter>
     </Image>
-    <Image Include="texture02.jpg">
-      <Filter>Файлы ресурсов</Filter>
+    <Image Include="mramor.jpg">
+      <Filter>Файлы ресурсов\texture</Filter>
+    </Image>
+    <Image Include="derevo.jpg">
+      <Filter>Файлы ресурсов\texture</Filter>
+    </Image>
+    <Image Include="asfalt.jpg">
+      <Filter>Файлы ресурсов\texture</Filter>
+    </Image>
+    <Image Include="med.jpg">
+      <Filter>Файлы ресурсов\texture</Filter>
+    </Image>
+    <Image Include="granit.jpg">
+      <Filter>Файлы ресурсов\texture</Filter>
+    </Image>
+    <Image Include="glina.jpg">
+      <Filter>Файлы ресурсов\texture</Filter>
     </Image>
   </ItemGroup>
 </Project>
