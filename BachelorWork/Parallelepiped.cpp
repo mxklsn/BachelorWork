@@ -307,6 +307,7 @@ void Parallelepiped::initShaders()
 	shaderLayerID = glGetUniformLocation(shaderID, "LayerColor");
 	shaderLayerColorRGBAID = glGetUniformLocation(shaderID, "LayerColorRGBA");
 	shaderPositionID = glGetUniformLocation(shaderID, "positionLighting");
+	shadersLightPosition_worldspaceID = glGetUniformLocation(shaderID, "LightPosition_worldspace");
 
 	textureID1 = glGetUniformLocation(shaderID, "mainSampler1");
 
@@ -361,6 +362,9 @@ void Parallelepiped::Draw(float *MVP, float *M, float *V, float *P, int displayT
 		glUniform3f(shaderPositionID, lamp->GetVector().x, lamp->GetVector().y, lamp->GetVector().z);
 	else 
 		glUniform3f(shaderPositionID, 0, 0, 0);
+
+	glUniform3f(shaderPositionID, lamp->_position.x, lamp->_position.y, lamp->_position.z);
+
 
 	int index = 0;
 	map<const char*, Texture*>::iterator item;

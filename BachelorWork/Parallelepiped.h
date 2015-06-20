@@ -26,6 +26,8 @@ protected:
 	GLuint shaderLayerID;
 	GLuint shaderLayerColorRGBAID;
 	GLuint shaderPositionID;
+	GLuint shadersLightPosition_worldspaceID;
+
 
 protected:
 	virtual void init() override;

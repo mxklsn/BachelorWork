@@ -6,7 +6,6 @@
 #include "SkyBox.h"
 #include "Texture.h"
 #include "Parallelepiped.h"
-#include "Parallelepiped.h"
 #include "Lamp.h"
 
 
@@ -70,20 +69,6 @@ void TimerCallbackFunction(int value)
 	glutPostRedisplay();
 }
 
-/*void ConsoleUsage() {
-	string value;
-	cout << "Enter command:" << endl;
-	cin >> value;
-
-	if (value == "grid")
-	{
-		float alpha;
-		cout << "Enter alpha" << endl;
-		cin >> alpha;
-		grids[0]->setAlpha(alpha);
-	}
-}*/
-
 void KeyboardCallbackFunction(unsigned char key, int x, int y)
 {
 	int addSpeed = 50;
@@ -95,37 +80,37 @@ void KeyboardCallbackFunction(unsigned char key, int x, int y)
 	case 'q':
 		camera->_position.x += addSpeed;
 		break;
-	case 'a':
+	case 'w':
 		camera->_position.x -= addSpeed;
 		break;
-	case 'w':
+	case 'a':
 		camera->_position.y += addSpeed;
 		break;
 	case 's':
 		camera->_position.y -= addSpeed;
 		break;
-	case 'e':
+	case 'z':
 		camera->_position.z += addSpeed;
 		break;
-	case 'd':
+	case 'x':
 		camera->_position.z -= addSpeed;
 		break;
-	case 't':
+	case 'e':
 		camera->_target.x += addSpeed;
 		break;
-	case 'g':
+	case 'r':
 		camera->_target.x -= addSpeed;
 		break;
-	case 'y':
+	case 'd':
 		camera->_target.y += addSpeed;
 		break;
-	case 'h':
+	case 'f':
 		camera->_target.y -= addSpeed;
 		break;
-	case 'u':
+	case 'c':
 		camera->_target.z += addSpeed;
 		break;
-	case 'j':
+	case 'v':
 		camera->_target.z -= addSpeed;
 		break;
 	case '1':
@@ -150,53 +135,24 @@ void KeyboardCallbackFunction(unsigned char key, int x, int y)
 		displayType = GL_TRIANGLES;
 		LayerColor = true;
 		break;
-	/*case 'z':
-		if (grids.size() > 0)
-			grids[0]->isEnable = !grids[0]->isEnable;
-		break;
-	case 'x':
-		section->isEnableGridSection = !section->isEnableGridSection;
-		break;
-	case 'c':
-		section->isEnable = !section->isEnable;
-		break;*/
-	case 'i':
+	case 't':
 		lamp->_position.x += addSpeed;
 		break;
-	case 'k':
+	case 'y':
 		lamp->_position.x -= addSpeed;
 		break;
-	case 'o':
+	case 'g':
 		lamp->_position.y += addSpeed;
 		break;
-	case 'l':
+	case 'h':
 		lamp->_position.y -= addSpeed;
 		break;
-	case 'p':
+	case 'b':
 		lamp->_position.z += addSpeed;
 		break;
-	case ';':
+	case 'n':
 		lamp->_position.z -= addSpeed;
 		break;
-	/*case '5':
-		section->position.y -= addSpeed;
-		section->Init();
-		section->Update(cubes);
-		break;
-	case '9':
-		section->position.z += addSpeed;
-		section->Init();
-		section->Update(cubes);
-		break;
-	case '6':
-		section->position.z -= addSpeed;
-		section->Init();
-		section->Update(cubes);
-		break;
-	case 'p':
-		ConsoleUsage();
-		break;
-		camera->Update();*/
 	case '0':
 		for (auto cube : cubes)
 			cube->section = !cube->section;
@@ -239,7 +195,6 @@ void ReshapeCallbackFunction(int width, int height)
 }
 
 /* Init functions */
-
 void InitGLStates()
 {
 	glShadeModel(GL_SMOOTH);
@@ -256,7 +211,7 @@ void InitGLStates()
 	glFrontFace(GL_CCW);
 	glCullFace(GL_BACK);
 	glEnable(GL_CULL_FACE);
-	glClearColor(0, 0, 0, 0);
+	glClearColor(1, 1, 1, 0);
 	glClearDepth(1.0);
 	glClearStencil(0);
 	glEnable(GL_TEXTURE0);

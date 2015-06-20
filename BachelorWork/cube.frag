@@ -39,6 +39,7 @@ void main(void){
 	//The lamp
 	if (!(positionLighting.x == 0 && positionLighting.y == 0 && positionLighting.z == 0))
 	{
+
 		//float cosTheta = dot( normal, vec3(-1,-1,-1)  );
 		float cosTheta = clamp( dot( normal,  positionLighting ), 0,1 );
 		color = color * vec4(1,0,0,1) * cosTheta;
