@@ -17,10 +17,12 @@ void Camera::calcProjection()
 {
 	_projection = perspective(45.0f, 1.0f, 10.01f, 10000.0f);	
 }
+
 void Camera::calcModel()
 {
 	_model = mat4(1.0f);
 }
+
 void Camera::calcView()
 {
 	_view = lookAt(_position, _target, _up);

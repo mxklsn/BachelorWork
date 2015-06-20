@@ -3,7 +3,9 @@
 #include "Helpers.h"
 #include "Texture.h"
 #include "BaseObject.h"
+#include "Lamp.h"
 
+class Lamp;
 
 using namespace glm;
 
@@ -32,7 +34,6 @@ protected:
 	virtual void initGeometry() override;
 public:
 
-	// TODO so bad
 	/* Позиционирование */
 	vec3 position;
 	vec3 size;
@@ -41,7 +42,7 @@ public:
 	vec3 positionLighting;
 
 	float material;
-
+	Lamp* lamp;
 	bool section;
 
 	Parallelepiped(vec3 position, vec3 size, float material);

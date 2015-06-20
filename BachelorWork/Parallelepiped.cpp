@@ -8,7 +8,7 @@ Parallelepiped::Parallelepiped(vec3 position_, vec3 size_, float material_) : po
 	position = vec3(position.x * scaleFactor, position.y * scaleFactor, position.z * scaleFactor);
 	GlobalSize = vec3(size_.x * scaleFactor, size_.y * scaleFactor, size_.z * scaleFactor);
 	size = vec3(size_.x / 2 * scaleFactor, size_.y / 2 * scaleFactor, size_.z / 2 * scaleFactor);
-
+	lamp = 0;
 	positionLighting = vec3(1, 1, 1);
 
 	if (material == 1)
@@ -357,8 +357,10 @@ void Parallelepiped::Draw(float *MVP, float *M, float *V, float *P, int displayT
 	glUniform3f(shaderSizeID, size.x, size.y, size.z);
 	glUniform1i(shaderLayerID, LayerColor);
 	glUniform4f(shaderLayerColorRGBAID, color.r, color.g, color.b, color.a);
-	glUniform3f(shaderPositionID, positionLighting.x, positionLighting.y, positionLighting.z);
-
+	if (lamp != 0)
+		glUniform3f(shaderPositionID, lamp->GetVector().x, lamp->GetVector().y, lamp->GetVector().z);
+	else 
+		glUniform3f(shaderPositionID, 0, 0, 0);
 
 	int index = 0;
 	map<const char*, Texture*>::iterator item;
