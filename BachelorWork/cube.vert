@@ -1,8 +1,6 @@
 ////////////////////////////////////////////////////////////
-// Vertex Shader
+// Cube Vertex Shader
 ////////////////////////////////////////////////////////////
-
-
 
 // Input vertex data, different for all executions of this shader.
 layout(location = 0) in vec3 mvp;
@@ -15,17 +13,18 @@ out vec2 UV;
 out vec4 pos;
 out vec3 mvpOut;
 out vec3 normal;
+out vec3 Position_worldspace;
 
 
 // Values that stay constant for the whole mesh.
 uniform mat4 MVP;
 uniform vec3 position;
 uniform vec3 size;
-
 uniform mat4 M;
 uniform mat4 V;
 uniform mat4 P;
 uniform vec3 LightPosition_worldspace;
+
 
 void main(void){
 
@@ -61,7 +60,9 @@ void main(void){
 	//gl_Position =  MVP * vec4(new_position,1);
  
 	// Position of the vertex, in worldspace : M * position
-	//Position_worldspace = (M * vec4(new_position,1)).xyz;
+	//Position_worldspace = (M * pos).xyz;
+	Position_worldspace = (M * vec4(new_position,1)).xyz;
+
  
 	// Vector that goes from the vertex to the camera, in camera space.
 	// In camera space, the camera is at the origin (0,0,0).
