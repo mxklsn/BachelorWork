@@ -43,9 +43,9 @@ void main(void){
 			// Red light
 		//vec4 LightColor = vec4(1,0,0,1);
 			// White light
-		vec4 LightColor = vec4(1, 1, 1,1);
+		//vec4 LightColor = vec4(1, 1, 1,1);
 			// Lite yellow light
-		//vec4 LightColor = vec4(0.52,1,1,0.7);
+		vec4 LightColor = vec4(0.52,1,1,0.7);
 
 			// Normal of the computed fragment, in camera space
 		vec3 n = normalize( Normal_cameraspace );
@@ -54,15 +54,12 @@ void main(void){
 
 		vec4 MaterialAmbientColor = vec4(0.1,0.1,0.1,1) * vec4(color);
 
-		float LightPower = 350.0f;
+		float LightPower = 500.0f;
 		float distance = length(positionLighting - Position_worldspace);
 		float cosTheta = clamp( dot( normal,  positionLighting ), 0,1 );
 
-			// Final color 
-		//color = color * LightColor * LightPower * cosTheta / (distance*distance);
-		//color = color * LightColor * LightPower * cosTheta / (distance);
 		color =
-		 // Ambient : simulates indirect lighting
+		 // Ambient : simulates indirect lighting (distance*distance)
 		 MaterialAmbientColor +
 		 // Diffuse : "color" of the object
 		 color * LightColor * LightPower * cosTheta / (distance) ;
