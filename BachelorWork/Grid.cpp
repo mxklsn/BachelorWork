@@ -1,4 +1,4 @@
-/*#include "Grid.h"
+#include "Grid.h"
 
 
 Grid::Grid(vec3 start_, vec3 size_, vec3 step_) : start(start_), size(size_), step(step_)
@@ -9,7 +9,6 @@ Grid::Grid(vec3 start_, vec3 size_, vec3 step_) : start(start_), size(size_), st
 	init();
 	initShaders();
 	initGeometry();
-
 }
 
 // TODO Сделать функцию и переменные static
@@ -79,7 +78,7 @@ void Grid::initShaders()
 
 	textureID1 = glGetUniformLocation(shaderID, "mainSampler");
 
-	AddTexture("texture01.jpg", textureID1);
+	AddTexture("asfalt.jpg", textureID1);
 }
 
 void Grid::initGeometry()
@@ -132,4 +131,3 @@ void Grid::Draw(float *MVP)
 Grid::~Grid()
 {
 }
-*/

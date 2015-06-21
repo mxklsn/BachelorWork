@@ -7,9 +7,7 @@
 #include "Texture.h"
 #include "Parallelepiped.h"
 #include "Lamp.h"
-
-
-//#include "Grid.h"
+#include "Grid.h"
 
 
 using namespace std;
@@ -30,9 +28,7 @@ Lamp* lamp;
 //SkyBox *skyBox;
 vector<Parallelepiped*> cubes;
 vector<Parallelepiped*> layers;
-
-//vector<Grid*> grids;
-
+vector<Grid*> grids;
 
 int displayType = GL_LINES;
 int displayTypeLayer = GL_LINES;
@@ -55,8 +51,8 @@ void DisplayCallbackFunction(void)
 		cube->Draw(&camera->MVP[0][0], &camera->_model[0][0], &camera->_view[0][0], &camera->_projection[0][0], displayType, LayerColor);
 	for (auto layer : layers)
 		layer->Draw(&camera->MVP[0][0], &camera->_model[0][0], &camera->_view[0][0], &camera->_projection[0][0], displayTypeLayer, LayerColor);
-//	for (auto grid : grids)
-//		grid->Draw(&camera->MVP[0][0]);
+	for (auto grid : grids)
+		grid->Draw(&camera->MVP[0][0]);
 	lamp->Draw(&camera->MVP[0][0], &camera->_model[0][0], &camera->_view[0][0], &camera->_projection[0][0]);
 	glutSwapBuffers();
 }
@@ -153,11 +149,15 @@ void KeyboardCallbackFunction(unsigned char key, int x, int y)
 	case 'n':
 		lamp->_position.z -= addSpeed;
 		break;
+	/*case '8':
+		if (grids.size() > 0)
+			grids[0]->isEnable = !grids[0]->isEnable;
+		break;*/
 	case '0':
 		for (auto cube : cubes)
 			cube->section = !cube->section;
-//		for (auto grid : grids)
-//			grid->section = !grid->section;
+		for (auto grid : grids)
+			grid->section = !grid->section;
 		break;
 	camera->Update();
 	}
@@ -230,6 +230,56 @@ Parallelepiped* getCube(ifstream* input)
 	return cube;
 }
 
+bool InitGrid()
+{
+	vector<int> pointX;
+	vector<int> pointY;
+	vector<int> pointZ;
+	for (auto cube : cubes) {
+		pointX.clear();
+		pointY.clear();
+		pointZ.clear();
+
+		vec3 sizeGrid = cube->GlobalSize;
+
+		pointX.push_back((cube->position.x - cube->size.x) * 2);
+		pointX.push_back((cube->position.x + cube->size.x) * 2);
+
+		pointY.push_back((cube->position.y - cube->size.y) * 2);
+		pointY.push_back((cube->position.y + cube->size.y) * 2);
+
+		pointZ.push_back((cube->position.z - cube->size.z) * 2);
+		pointZ.push_back((cube->position.z + cube->size.z) * 2);
+
+		int minNODX = NOD(pointX[0], pointX[1]);
+		for (int i = 0; i < pointX.size(); i++)
+		for (int j = 0; j < pointX.size(); j++)
+		if (NOD(pointX[i], pointX[j]) != 0)
+			minNODX = std::min(minNODX, NOD(pointX[i], pointX[j]));
+
+		int minNODY = NOD(pointY[0], pointY[1]);
+		for (int i = 0; i < pointY.size(); i++)
+		for (int j = 0; j < pointY.size(); j++)
+		if (NOD(pointY[i], pointY[j]) != 0)
+			minNODY = std::min(minNODY, NOD(pointY[i], pointY[j]));
+
+		int minNODZ = NOD(pointZ[0], pointZ[1]);
+		for (int i = 0; i < pointZ.size(); i++)
+		for (int j = 0; j < pointZ.size(); j++)
+		if (NOD(pointZ[i], pointZ[j]) != 0)
+			minNODZ = std::min(minNODZ, NOD(pointZ[i], pointZ[j]));
+
+		vec3 new_sizeGrid = vec3(sizeGrid.x / 2, sizeGrid.y / 2, sizeGrid.z / 2);
+
+		grids.push_back(new Grid(cube->position - cube->size, sizeGrid, vec3(cube->size.x / 5, cube->size.y / 5, cube->size.z / 5)));
+	}
+	return true;
+}
+
+/*void InitSection() {
+	section = new Section();
+}*/
+
 bool InitOther()
 {
 	camera = new Camera();
@@ -245,7 +295,8 @@ bool InitOther()
 	input >> countCubes;
 	for (int j = 0; j < countCubes; j++)
 		cubes.push_back(getCube(&input));
-	//InitGrid();
+	
+	InitGrid();
 	//section->Init();
 	//section->Update(cubes);
 	return true;

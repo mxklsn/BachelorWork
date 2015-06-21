@@ -97,6 +97,12 @@
     <None Include="sectionCube.vert">
       <Filter>Файлы ресурсов\shaders</Filter>
     </None>
+    <None Include="grid.vert">
+      <Filter>Файлы ресурсов\shaders</Filter>
+    </None>
+    <None Include="grid.frag">
+      <Filter>Файлы ресурсов\shaders</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Helpers.h">
@@ -127,6 +133,9 @@
       <Filter>Заголовочные файлы</Filter>
     </ClInclude>
     <ClInclude Include="Section.h">
+      <Filter>Заголовочные файлы</Filter>
+    </ClInclude>
+    <ClInclude Include="Grid.h">
       <Filter>Заголовочные файлы</Filter>
     </ClInclude>
   </ItemGroup>
