@@ -37,6 +37,7 @@ void main(void){
 			discard; 
 
 	
+
 	// Lamp
 	if (!(positionLighting.x == 0 && positionLighting.y == 0 && positionLighting.z == 0)){
 
